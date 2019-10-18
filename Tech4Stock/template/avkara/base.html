@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'avkara/base_style.css' %}">
+  </head>
+  <body>
+    {% block bodyblock %}
+    {% endblock %}
+  </body>
+</html>
