@@ -96,12 +96,9 @@ def sendSMS(apikey, numbers, sender, message):
     fr = f.read()
     return(fr)
 
-a = sendSMS('PErxhKUk/28-mdXMhc7ovsbdjKnP6BlaTabCWtk9QP', '919799335153', 'Jims Autos', 'Hello World!')
-print(a)
-
 def trigger(request):
     trigger_form = Switch(request.POST)
-    #sendSMS('PErxhKUk/28-mdXMhc7ovsbdjKnP6BlaTabCWtk9QP', '919799335153', 'Jims Autos', 'Hello World!')
+    sendSMS('PErxhKUk/28-mdXMhc7ovsbdjKnP6BlaTabCWtk9QP', '919799335153', 'Jims Autos', 'Hello World!')
     return render(request, 'avkara/sent.html', {'trigger_form' : trigger_form })
 """
 print(x)
