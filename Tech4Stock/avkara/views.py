@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from avkara.forms import UserForm, SellerDetailsForm, VendorDetailsForm
+from avkara.forms import UserForm, SellerDetailsForm, VendorDetailsForm, Switch
 from django.urls import reverse
-from .models import VendorDetails
+from .models import VendorDetails, SellerDetails
 import urllib.request
 import urllib.parse
 
@@ -62,8 +62,8 @@ def signup_seller(request):
 def signup_vendor(request):
     vendor_registered = False
     if request.method == 'POST':
-        user_form_vendor = UserForm(data=request.POST)
-        vendor_form = VendorDetailsForm(data= request.POST)
+        user_form_vendor = UserForm(data = request.POST)
+        vendor_form = VendorDetailsForm(data = request.POST)
         if user_form_vendor.is_valid() and vendor_form.is_valid():
             vendor= user_form_vendor.save()
 
@@ -86,8 +86,6 @@ def vendors_list(request):
     context= {'allvendors': allvendors}
     return render(request, 'avkara/vendors_list.html', context)
 
-"""
-message = "Dealer name:", SellerDetails.name, " Mobile number:", SellerDetails.mobile_number, " address:", SellerDetails.address
 
 def sendSMS(apikey, numbers, sender, message):
     data =  urllib.parse.urlencode({'apikey': 'PErxhKUk/28-mdXMhc7ovsbdjKnP6BlaTabCWtk9QP', 'numbers': '919799335153',
@@ -98,6 +96,17 @@ def sendSMS(apikey, numbers, sender, message):
     fr = f.read()
     return(fr)
 
-resp =  sendSMS('PErxhKUk/28-mdXMhc7ovsbdjKnP6BlaTabCWtk9QP', '919799335153',
-    'Jims Autos', message)
+a = sendSMS('PErxhKUk/28-mdXMhc7ovsbdjKnP6BlaTabCWtk9QP', '919799335153', 'Jims Autos', 'Hello World!')
+print(a)
+
+def trigger(request):
+    trigger_form = Switch(request.POST)
+    #sendSMS('PErxhKUk/28-mdXMhc7ovsbdjKnP6BlaTabCWtk9QP', '919799335153', 'Jims Autos', 'Hello World!')
+    return render(request, 'avkara/sent.html', {'trigger_form' : trigger_form })
+"""
+print(x)
+
+if x==1:
+    sendSMS('PErxhKUk/28-mdXMhc7ovsbdjKnP6BlaTabCWtk9QP', '919799335153',
+        'Jims Autos', 'Hello World!')
 """
