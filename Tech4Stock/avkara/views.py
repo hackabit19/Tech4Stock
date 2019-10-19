@@ -1,13 +1,18 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from avkara.forms import UserForm, SellerDetailsForm, VendorDetailsForm
+from django.urls import reverse
+from .models import VendorDetails
+from django_twilio.decorators import twilio_view
+from twilio.twiml.messaging_response import MessagingResponse
 
 # Create your views here.
 def index(request):
     return render(request, 'avkara/index.html')
 
-def login(request):
+def login_user(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
     user = authenticate(request, username=username, password=password)
@@ -27,7 +32,11 @@ def login(request):
             return HttpResponse('Incorrect details')
     else:
 
-    return render(request, 'avkara/login.html')
+        return render(request, 'avkara/login.html')
+
+def logout_user(request):
+    logout(request)
+    return render(request, 'avkara/logout_page.html')
 
 def signup_seller(request):
     seller_registered = False
@@ -70,3 +79,15 @@ def signup_vendor(request):
         user_form_vendor = UserForm()
         vendor_form = VendorDetailsForm()
     return render(request, 'avkara/signup_vendor.html', {'user_form_vendor': user_form_vendor, 'vendor_form': vendor_form, 'vendor_registered': vendor_registered})
+
+@login_required
+def vendors_list(request):
+    allvendors= VendorDetails.objects.all()
+    context= {'allvendors': allvendors}
+    return render(request, 'avkara/vendors_list.html', context)
+
+@twilio_view
+def sms(request):
+    r = Response()
+    r.message('Hello from your Django app!')
+    return r

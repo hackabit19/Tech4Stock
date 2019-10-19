@@ -5,8 +5,10 @@
 <div class="container">
   <div class="jumbotron">
     <h1>Let's start</h1>
-    {% csrf_token %}
-    <form>
+    {% block logout %}
+    {% endblock %}
+    <form method="post">
+      {% csrf_token %}
       <div class="form-group">
         <label for="exampleInputEmail1">Username</label>
         <input type="text" class="form-control" placeholder="Enter username" name="username">
@@ -17,6 +19,7 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <h4>Dont have an account yet? Sign up here for <a href="{% url 'avkara:signup_seller' %}">seller</a> and <a href="{% url 'avkara:signup_vendor' %}">vendor</a></h4>
   </div>
 </div>
 {% endblock %}
