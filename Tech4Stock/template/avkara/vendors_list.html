@@ -25,8 +25,10 @@
 
   <h2>List of vendors:</h2>
   {% for VendorDetails in allvendors %}
-    <p><b>Name:</b> {{ VendorDetails.name }}</p>
-    <p><b>Rate of purchasig</b>{{ VendorDetails.rate }}</p>
+    <div class="border jumbotron">
+      <p><b>Name:</b> {{ VendorDetails.name }}</p>
+      <p><b>Rate of purchasing</b>{{ VendorDetails.rate }}</p>
+    </div>
   {% endfor %}
 </div>
 {% endblock %}

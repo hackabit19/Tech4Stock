@@ -1,4 +1,7 @@
 {% extends 'avkara/base.html' %}
-<h3>You have been successfully logged out!</h3>
-<h4>click here to <a href="{% url 'avkara:login' %}">login</a> again</h4>
+{% block bodyblock %}
+<div class="container jumbotron">
+  <h3>You have been successfully logged out!</h3>
+  <h4>click here to <a href="{% url 'avkara:login' %}">login</a> again</h4>
+</div>
 {% endblock %}

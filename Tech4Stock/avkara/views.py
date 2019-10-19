@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 from avkara.forms import UserForm, SellerDetailsForm, VendorDetailsForm
 from django.urls import reverse
 from .models import VendorDetails
-from django_twilio.decorators import twilio_view
-from twilio.twiml.messaging_response import MessagingResponse
+import urllib.request
+import urllib.parse
 
 # Create your views here.
 def index(request):
@@ -86,8 +86,18 @@ def vendors_list(request):
     context= {'allvendors': allvendors}
     return render(request, 'avkara/vendors_list.html', context)
 
-@twilio_view
-def sms(request):
-    r = Response()
-    r.message('Hello from your Django app!')
-    return r
+"""
+message = "Dealer name:", SellerDetails.name, " Mobile number:", SellerDetails.mobile_number, " address:", SellerDetails.address
+
+def sendSMS(apikey, numbers, sender, message):
+    data =  urllib.parse.urlencode({'apikey': 'PErxhKUk/28-mdXMhc7ovsbdjKnP6BlaTabCWtk9QP', 'numbers': '919799335153',
+        'message' : 'Hello World!', 'TXTLCL': sender})
+    data = data.encode('utf-8')
+    request = urllib.request.Request("https://api.textlocal.in/send/?")
+    f = urllib.request.urlopen(request, data)
+    fr = f.read()
+    return(fr)
+
+resp =  sendSMS('PErxhKUk/28-mdXMhc7ovsbdjKnP6BlaTabCWtk9QP', '919799335153',
+    'Jims Autos', message)
+"""
