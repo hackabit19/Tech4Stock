@@ -1,22 +1,23 @@
 from django import forms
 from avkara.models import SellerDetails, VendorDetails
+from django.contrib.auth.models import User
 
 class SellerDetailsForm(forms.ModelForm):
 
     class Meta:
         model = SellerDetails
-        fields = ('name', 'username', 'mobile_number', 'address')
+        fields = ('name', 'mobile_number', 'address')
 
 
 class VendorDetailsForm(forms.ModelForm):
 
     class Meta:
         model = VendorDetails
-        fields = ('name', 'username', 'mobile_number')
+        fields = ('name', 'mobile_number')
 
-class UserForm(object):
-    password = forms.CharField(widget = PasswordInput())
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget = forms.PasswordInput())
 
-    class ClassName(object):
+    class Meta:
         model = User
         fields = ('username', 'password')

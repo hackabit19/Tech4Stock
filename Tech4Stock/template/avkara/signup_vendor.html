@@ -1,0 +1,22 @@
+{% extends 'avkara/base.html' %}
+{% block title %}Signup as a seller -avkara{% endblock %}
+{% block bodyblock %}
+<div class="container">
+  <div class="jumbotron">
+    {% if vendor_registered %}
+    <h1>Thank you for registering,</h1>
+    <h2><a href="{% url 'avkara:login' %}">click here</a> to login</h2>
+    {% else %}
+    <h1>Sign up and make the most out of your work</h1>
+    <form method="post">
+      <div class="form-group">
+        {% csrf_token %}
+        {{ user_form_vendor.as_p }}
+        {{ vendor_form.as_p }}
+        <input type="submit" value="Start!">
+      </div>
+    </form>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

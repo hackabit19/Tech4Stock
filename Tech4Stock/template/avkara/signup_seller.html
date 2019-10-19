@@ -1,16 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'avkara/base.html' %}
 {% block title %}Signup as a seller -avkara{% endblock %}
 {% block bodyblock %}
 <div class="container">
   <div class="jumbotron">
+    {% if seller_registered %}
+    <h1>You are already seller_registered</h1>
+    {% else %}
     <h1>Sign up to sell your waste in a way never imagined before!</h1>
     <form method="post">
       <div class="form-group">
         {% csrf_token %}
-        {{ user_form }}
-        {{ seller_form }}
+        {{ user_form.as_p }}
+        {{ seller_form.as_p }}
         <input type="submit" value="Start!">
       </div>
     </form>
   </div>
 </div>
+{% endif %}
+{% endblock %}

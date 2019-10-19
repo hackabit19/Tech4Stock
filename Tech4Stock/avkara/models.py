@@ -5,14 +5,14 @@ from django.contrib.auth.models import User
 class SellerDetails(models.Model):
     name = models.CharField(max_length = 64)
     username = models.OneToOneField(User, on_delete = models.CASCADE)
-    mobile_number = models.PositiveIntegerField(primary_key=True, validators=[MaxValueValidator(10)], blank = False)
-    address = models.CharField(blank = False, max_length = 128)
+    mobile_number = models.PositiveIntegerField(primary_key=True, validators=[MaxValueValidator(10)])
+    address = models.CharField(max_length = 128)
     def __str__(self):
-        return self.user.username
+        return self.username.username
 
 class VendorDetails(models.Model):
     name = models.CharField(max_length = 64)
     username_vendor = models.OneToOneField(User, on_delete = models.CASCADE)
-    mobile_number = models.PositiveIntegerField(primary_key=True, validators=[MaxValueValidator(10)], blank = False)
+    mobile_number = models.PositiveIntegerField(primary_key=True, validators=[MaxValueValidator(10)])
     def __str__(self):
-        return self.user.username_vendor
+        return self.username_vendor.username
