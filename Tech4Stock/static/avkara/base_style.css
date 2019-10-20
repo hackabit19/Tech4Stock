@@ -1,6 +1,9 @@
-body {
-  margin: 0px;
-  padding: 0px;
+body, html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .bg-img2 {
@@ -13,6 +16,13 @@ body {
   height: 100%;
 }
 
-h1 {
-  color: red;
+.content {
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
 }

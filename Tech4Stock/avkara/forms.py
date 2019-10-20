@@ -13,7 +13,7 @@ class VendorDetailsForm(forms.ModelForm):
 
     class Meta:
         model = VendorDetails
-        fields = ('name', 'mobile_number')
+        fields = ('name', 'mobile_number','rate')
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget = forms.PasswordInput())

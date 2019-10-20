@@ -14,7 +14,7 @@ class VendorDetails(models.Model):
     name = models.CharField(max_length = 64)
     username_vendor = models.OneToOneField(User, on_delete = models.CASCADE)
     mobile_number = models.PositiveIntegerField(primary_key=True, validators=[MinValueValidator(999999999)])
-    #switch = models.BooleanField(default=False)
+    rate = models.CharField(max_length=64)
 
     def __str__(self):
         return self.username_vendor.username
