@@ -3,16 +3,55 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Welcome to Avkara</title>
+    <title>{% block title %}Homepage -Tech4Stock{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'avkara/style.css' %}">
+    <link rel="stylesheet" href="{% static "avkara/style.css" %}" type="text/css">
   </head>
   <body>
-    <div class="bg-img"></div>
+    {% block bodyblock %}
+    <div class= "bg-img"> </div>
     <div class="content">
-      <h1>Welcome to Avkara</h1>
-      <h6>By Tech4Stock</h6>
-      <a href="{% url 'avkara:login' %}"><button type="button" name="button" class="btn btn-success button">Get started!</button></a>
+      <h1>Welcome to AVKARA</h1>
+      <h3>by Tech4Stock<h3>
+      <a href= '{% url "avkara:login" %}'><button type="button" class="btn btn-secondary button">Get Started!</button></a>
     </div>
+
+      <div class="bg2">
+          <div class="textareaa left">
+            <h2>What is AVKARA?</h2>
+            <p>AVKARA is a waste management company by Tech4Stock. This applicationis a online waste selling portal ehich lets the users choose which vendor hey wish to sell thir waste. Customers can also choose when to sell their waste, according to their meeds.</p>
+
+            <h2>Why AVKARA?</h2>
+            <p>Currently, there is no service that lets you sell your waste to the available vendors. AVKARA lets you do that. We all have faced a time when have desired a <i>raddiwala</i> on our doorstep but were unsucessful finding him on the right time.
+              AVKARA help you sell your waste by letting you call your desired waste vendor, from the desired vendors list, who can pickup your waste at the rate that suits you.</p>
+
+            <h2>What is the meaning of the word, 'AVKARA'?</h2>
+            <p>AVKARA is a sanskrit word meaning, 'dustbin'. It is relatable to the work we do :)</p>
+          </div>
+
+          <div class= "textareaa right">
+            <h2>some question?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut laborest laborum.</p>
+
+            <h2>some question?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut laborest laborum.</p>
+
+            <h2>some question?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut laborest laborum  jdhcv iyu d aoix oix  iuoaq.</p>
+
+          </div>
+        </div>
+
+
+    <div class="contact">
+      <h5>Contact Us</h5>
+      <h5>About</h5><br><br><br><br><br>
+      <h6>© 2019, AVKARA PVT. LTD.</h6>
+    </div>
+    {% endblock %}
   </body>
 </html>

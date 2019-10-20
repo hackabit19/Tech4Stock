@@ -2,3 +2,17 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
+.bg-img2 {
+  background-image: url("other_bag.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100%;
+}
+
+h1 {
+  color: red;
+}
